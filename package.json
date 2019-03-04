@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "Taller",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Taller",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Jorge Luis Calleja Alvarado <jorgelca1205@gmail.com>",
   "dependencies": {
     "gatsby": "^2.1.19",
     "gatsby-image": "^2.0.30",
@@ -19,19 +19,39 @@
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-import-resolver-webpack": "^0.11.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "lint-staged": "^8.1.1",
+    "node-sass": "^4.11.0",
+    "pre-commit": "^1.2.2",
     "prettier": "^1.16.4"
   },
+  "license": "MIT",
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "lint": "npm run lint:eslint",
+    "lint:eslint": "eslint --fix .",
+    "lint:staged": "npm run prettier && lint-staged",
+    "prettier": "prettier --ignore-path \"./.prettierignore\" --config .prettierrc --write \"./src/**/*.js\" \"./src/**/*.jsx\""
+  },
+  "lint-staged": {
+    "*.js": "npm run lint:eslint"
+  },
+  "pre-commit": "lint:staged",
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
   },
   "repository": {
     "type": "git",
